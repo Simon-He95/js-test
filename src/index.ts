@@ -1,10 +1,10 @@
-const suite = new Benchmark.Suite()
-
 interface Fns {
   name: string
   fn: Function
 }
 export function test(fns: Fns[]) {
+  const suite = new Benchmark.Suite()
+
   // add tests
   return new Promise((resolve) => {
     const results: string[] = []
