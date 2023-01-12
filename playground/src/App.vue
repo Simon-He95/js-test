@@ -4,8 +4,8 @@ import * as monaco from 'monaco-editor'
 import { test } from '../../src'
 const tests = reactive([{ name: 'test#1' }, { name: 'test#2' }])
 const editors: any[] = []
-const status = ref(false)
-const output = ref('')
+const loading = ref(false)
+const output = reactive([])
 const add = () => {
   tests.push({
     name: `test#${tests.length + 1}`,
@@ -25,11 +25,10 @@ const run = async () => {
     }
   })
   // loading
-  status.value = true
-  output.value = ''
-  test(data).then((result: any) => {
-    output.value = result
-    status.value = false
+  loading.value = true
+  output.length = 0
+  test(data, output).then((result: any) => {
+    loading.value = false
   })
 }
 const value = ref('// test fn')
@@ -83,6 +82,25 @@ watchEffect(
   <div text-center text-3xl pt4 text-shadow-sm>
     Online Javascript Test
   </div>
+  <div
+    v-show="loading"
+    class="loading"
+    fixed
+    left-0
+    right-0
+    top-0
+    bottom-0
+    flex
+    justify-center
+    items-center
+    z-10
+    bg-dark-400:20
+  >
+    <svg viewBox="25 25 50 50">
+      <circle cx="50" cy="50" r="20" />
+    </svg>
+  </div>
+
   <main
     font-sans
     p="x-4 y-10"
@@ -125,10 +143,10 @@ watchEffect(
     <div w-60 />
     <div w-60 fixed right-4 bg-white>
       <div flex="~ gap2" w-full justify-center pt20>
-        <button btn :disabled="status" @click="add">
+        <button btn :disabled="loading" @click="add">
           Add Test
         </button>
-        <button btn :disabled="status" @click="run">
+        <button btn :disabled="loading" @click="run">
           Run
         </button>
       </div>
@@ -140,3 +158,41 @@ watchEffect(
     </div>
   </main>
 </template>
+
+<style scoped>
+svg {
+  width: 3.75em;
+  transform-origin: center;
+  animation: rotate 2s linear infinite;
+}
+
+circle {
+  fill: none;
+  stroke: #fc2f70;
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+</style>

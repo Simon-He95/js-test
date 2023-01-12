@@ -2,12 +2,10 @@ interface Fns {
   name: string
   fn: Function
 }
-export function test(fns: Fns[]) {
+export function test(fns: Fns[], results: any) {
   const suite = new Benchmark.Suite()
-
   // add tests
   return new Promise((resolve) => {
-    const results: string[] = []
     fns.forEach(({ name, fn }) => {
       suite.add(name, () => {
         fn()
