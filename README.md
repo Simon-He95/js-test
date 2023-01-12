@@ -2,6 +2,11 @@
 
 一个在线 javascript 测试页面
 
+## Powered by
+
+- benchmark
+- monaco-editor
+
 ## License
 
 [MIT](./LICENSE) License © 2022 [Simon He](https://github.com/Simon-He95)
