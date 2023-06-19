@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': ^0.34.0
-      '@simon_he/git-fork-vue': ^0.0.8
+      '@simon_he/git-fork-vue': ^0.0.12
       '@types/node': ^18.0.0
       '@vitejs/plugin-vue': ^3.1.2
       '@vueuse/core': ^9.0.0
@@ -30,7 +30,7 @@ importers:
       vue: 3.2.45
     devDependencies:
       '@antfu/eslint-config': 0.34.1_iukboom6ndih5an6iafl45j2fe
-      '@simon_he/git-fork-vue': 0.0.8
+      '@simon_he/git-fork-vue': 0.0.12
       '@types/node': 18.11.18
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.5+vue@3.2.45
       benchmark: 2.1.4
@@ -434,8 +434,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@simon_he/git-fork-vue/0.0.8:
-    resolution: {integrity: sha512-XR3I5COvQYXrGskN/Zwq/fIW4luJfkZmSedTyA8FzfMkS/RNl8hGZoIWQ7rT+x4B6z+LSWSEvE2bVWnaCiRE1w==}
+  /@simon_he/git-fork-vue/0.0.12:
+    resolution: {integrity: sha512-6CXqopQKR62mBaoxJdf88eulevd2vhEbnt4RjaKpKyXayewO89gkSFsaSvXRKg02+gs13P/dufxH8Rg1+7TPew==}
     dependencies:
       '@vueuse/core': 8.9.4_vue@3.2.45
       vue: 3.2.45
